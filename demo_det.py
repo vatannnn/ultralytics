@@ -1,10 +1,10 @@
 import torch
 from ultralytics import YOLO, RTDETR
-BATCH_SIZE = 32
-EPOCHS = 500
-IMGSZ = 640
-DEVICE = torch.device('cuda:0')
-DATA = "billboard_mdet5_10_det_0806m.yaml"
+BATCH_SIZE = 2
+EPOCHS = 5
+IMGSZ = 320
+DEVICE = torch.device('cpu')
+DATA = "experiment.yaml"
 
 
 def yolo8_x():
@@ -31,7 +31,8 @@ def yolo9_e():
 
 
 def yolo10_x():
-    model = YOLO("yolov10x.yaml", task='detect')
+    #model = YOLO("yolov10x.yaml", task='detect')
+    model = YOLO("SPPF-SPPyolov10n.yaml", task='detect')
     # model.load('yolov10x.pt')
     model.train(data=DATA, device=DEVICE,
                 epochs=EPOCHS, imgsz=IMGSZ, val=True, batch=BATCH_SIZE, patience=EPOCHS)
@@ -68,7 +69,7 @@ if __name__ == '__main__':
     pass
     # yolo8_x()
     # yolo9_e()
-    # yolo10_x()
+    yolo10_x()
     # rtdetr_x()
     # model_val(r'runs/detect/train38/weights/best.pt')
     # model_val(r'runs/detect/train39/weights/best.pt')
@@ -76,4 +77,4 @@ if __name__ == '__main__':
     # model_val(r'runs/detect/train41/weights/best.pt')
     # model_val(r'runs/detect/train43/weights/best.pt')
     # model_val_rtdetr(r'runs/detect/train44/weights/best.pt')
-    model_val(r'runs/detect/train51/weights/best.pt')
+    # model_val(r'runs/detect/train51/weights/best.pt')
