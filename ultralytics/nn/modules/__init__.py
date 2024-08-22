@@ -29,6 +29,7 @@ from .block import (
     SPP,
     SPPELAN,
     SPPF,
+    SPPE,
     AConv,
     ADown,
     Attention,

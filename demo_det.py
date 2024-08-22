@@ -32,7 +32,7 @@ def yolo9_e():
 
 def yolo10_x():
     #model = YOLO("yolov10x.yaml", task='detect')
-    model = YOLO("SPPF-SPPyolov10n.yaml", task='detect')
+    model = YOLO("SPPE-SPPyolov10n.yaml", task='detect')
     # model.load('yolov10x.pt')
     model.train(data=DATA, device=DEVICE,
                 epochs=EPOCHS, imgsz=IMGSZ, val=True, batch=BATCH_SIZE, patience=EPOCHS)
